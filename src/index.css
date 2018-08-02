@@ -1,0 +1,19 @@
+.navbar li{
+    float: left;
+    list-style: none;
+    margin-left: 20px;
+}
+
+ .navbar::after{
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.navbar ul {
+    float: right;
+}
+
+li a {
+    text-decoration: none;
+} 
