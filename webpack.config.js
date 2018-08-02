@@ -1,13 +1,14 @@
 var path = require("path");
 var webpack = require("webpack");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "bundle.js",
+    filename: "[hash].bundle.js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: '/'
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -55,7 +56,11 @@ module.exports = {
     ]
   },
   devtool: "#source-map",
-  plugins: [new webpack.HotModuleReplacementPlugin(),new HtmlWebpackPlugin({template: './src/index.html'}),],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new CleanWebpackPlugin(["dist"])
+  ],
   devServer: {
     inline: true,
     clientLogLevel: "none",
