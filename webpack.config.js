@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: "[hash].bundle.js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/"
+    publicPath: "./"
   },
   module: {
     rules: [
@@ -21,37 +21,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.(png|jpg|gif|eot|svg|ttf|woff)$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              // 这里的options选项参数可以定义多大的图片转换为base64
-              limit: 50000, // 表示小于50kb的图片转为base64,大于50kb的是路径
-              outputPath: "images" //定义输出的图片文件夹
-            }
-          }
-        ]
-      },
-      {
-        test: /\.scss/, // SCSS 文件的处理顺序为先 sass-loader 再 css-loader 再 style-loader
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: false,
-              localIdentName: "[path][name]__[local]--[hash:base64:5]"
-            }
-          },
-          {
-            loader: "sass-loader"
-          }
-        ]
       }
     ]
   },
