@@ -36,7 +36,7 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
     hot: true, // 热启动
     open: true, // 打包好后从浏览器打开
-    historyApiFallback: true,
+    historyApiFallback: false,
     compress: true,
     overlay: {
       // 项目报错警告，设置成true，在页面上会显示报错
