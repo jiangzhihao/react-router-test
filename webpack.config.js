@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: "[hash].bundle.js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "./"
+    // publicPath: "./"
   },
   module: {
     rules: [
@@ -27,13 +27,14 @@ module.exports = {
   devtool: "#source-map",
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new HtmlWebpackPlugin({ template: "./index.html" }),
     new CleanWebpackPlugin(["dist"])
   ],
   devServer: {
+    // publicPath: "/",
     inline: true,
-    clientLogLevel: "none",
-    contentBase: path.join(__dirname, "dist"),
+    clientLogLevel: "none",//不打印浏览器输出
+    // contentBase: path.join(__dirname, "dist"),
     hot: true, // 热启动
     open: true, // 打包好后从浏览器打开
     historyApiFallback: false,
